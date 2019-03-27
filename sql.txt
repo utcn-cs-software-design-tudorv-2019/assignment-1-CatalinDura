@@ -1,0 +1,62 @@
+CREATE TABLE `test`.`student` (
+  `idstudent` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `age` INT NULL,
+  `email` VARCHAR(45) NULL,
+  `password` VARCHAR(45) NULL,
+  PRIMARY KEY (`idstudent`));
+
+  
+  CREATE TABLE `test`.`teacher` (
+  
+`idteacher` INT NOT NULL,
+  
+`name` VARCHAR(45) NULL,
+ 
+ `email` VARCHAR(45) NULL,
+
+  `phoneNumber` VARCHAR(45) NULL,
+
+  `courseName` VARCHAR(45) NULL,
+  
+`password` VARCHAR(45) NULL,
+ 
+ PRIMARY KEY (`idteacher`));
+
+  
+  CREATE TABLE `test`.`course` (
+  `idCourse` INT NOT NULL AUTO_INCREMENT,
+  `idStudent` INT NULL,
+  `idTeacher` INT NULL,
+  `grade` VARCHAR(45) NULL,
+  `dateexam` VARCHAR(45) NULL,
+  PRIMARY KEY (`idCourse`),
+  INDEX `idStudent_idx` (`idStudent` ASC) ,
+  INDEX `idTeacher_idx` (`idTeacher` ASC) ,
+  CONSTRAINT `idStudent`
+    FOREIGN KEY (`idStudent`)
+    REFERENCES `test`.`student` (`idstudent`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `idTeacher`
+    FOREIGN KEY (`idTeacher`)
+    REFERENCES `test`.`teacher` (`idteacher`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+	
+insert into student(idstudent,name,age,email,password) values(1,"Paul",21,"paul@yahoo.com",111);
+
+insert into student(idstudent,name,age,email,password) values(2,"Catalin",22,"catalin@yahoo.com",222);
+
+insert into student(idstudent,name,age,email,password) values(3,"Mirela",19,"mirela@yahoo.com",333)
+
+nsert into teacher(idteacher,name,email,phonenumber,courseName,password) values(1,"Mihai","mihai@yahoo.com","0749376481","SSC","111");
+
+
+
+insert into teacher(idteacher,name,email,phonenumber,courseName,password) values(2,"George","george@yahoo.com","0742276481","PS","222");
+
+
+
+insert into teache(idteacher,name,email,phonenumber,courseName,password) values(3,"Alin","alin@yahoo.com","0742276111","LFT","333");
